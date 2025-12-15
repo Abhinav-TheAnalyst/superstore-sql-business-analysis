@@ -189,6 +189,39 @@ def compute_kpis(df):
     if region and profit:
         top_region = df.groupby(region)[profit].sum().idxmax()
         out['top_region_by_profit'] = str(top_region)
+    # average discount and avg profit per order
+    discount_col = find_col(df, ['Discount'])
+    if discount_col:
+        out['avg_discount'] = float(df[discount_col].dropna().mean())
+
+    if profit:
+        out['avg_profit_per_order'] = float(df[profit].dropna().mean())
+
+    # top 3 regions by profit
+    if region and profit:
+        top_regions = df.groupby(region)[profit].sum().sort_values(ascending=False).head(3).index.tolist()
+        out['top_3_regions_by_profit'] = [str(x) for x in top_regions]
+
+    # top 10 customers by profit
+    cust_col = find_col(df, ['Customer Name', 'Customer', 'CustomerName', 'Customer_Name'])
+    if cust_col and profit:
+        top_customers = df.groupby(cust_col)[profit].sum().sort_values(ascending=False).head(10)
+        out['top_10_customers_by_profit'] = [str(x) for x in top_customers.index.tolist()]
+
+    # discount threshold where average profit becomes negative (binned)
+    if discount_col and profit:
+        try:
+            bins = pd.cut(df[discount_col].dropna(), bins=20)
+            grp = df.dropna(subset=[discount_col, profit]).groupby(bins)[profit].mean()
+            neg_bins = grp[grp < 0]
+            if not neg_bins.empty:
+                # choose the left edge of first negative bin as threshold
+                first_bin = neg_bins.index[0]
+                threshold = float(first_bin.left)
+                out['discount_threshold_loss'] = threshold
+        except Exception:
+            pass
+
     return out
 
 

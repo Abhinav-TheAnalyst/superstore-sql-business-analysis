@@ -1,5 +1,25 @@
 {
   "total_sales": 2297200.8603,
   "total_profit": 286397.0217,
-  "top_region_by_profit": "West"
+  "top_region_by_profit": "West",
+  "avg_discount": 0.1562027216329798,
+  "avg_profit_per_order": 28.65689630778467,
+  "top_3_regions_by_profit": [
+    "West",
+    "East",
+    "South"
+  ],
+  "top_10_customers_by_profit": [
+    "Tamara Chand",
+    "Raymond Buch",
+    "Sanjit Chand",
+    "Hunter Lopez",
+    "Adrian Barton",
+    "Tom Ashbrook",
+    "Christopher Martinez",
+    "Keith Dawkins",
+    "Andy Reiter",
+    "Daniel Raglin"
+  ],
+  "discount_threshold_loss": 0.28
 }

@@ -70,27 +70,49 @@ The chart generator writes `dashboard/screenshots/kpis.json`. The latest values 
 - **Total profit:** `286,397.02`
 - **Top region by profit:** `West`
 
+**Quick KPI highlights**
+
+- **Total sales:** `2,297,200.86`
+- **Total profit:** `286,397.02`
+- **Average discount:** `15.6%`
+- **Avg profit per order:** `28.66`
+- **Discount threshold where avg profit turns negative (approx):** `28%`
+
 Visuals (embedded)
 -------------------
 All visuals were created with `matplotlib` + `seaborn` and saved to `dashboard/screenshots/`.
 
 - **Profit by region**
 
-   ![Profit by region](dashboard/screenshots/profit_by_region.png)
+   <img src="dashboard/screenshots/profit_by_region.png" alt="Profit by region" width="320" />
 
    Short interpretation: The `West` region shows the highest aggregated profit in this dataset.
 
 - **Discount vs Profit**
 
-   ![Discount vs Profit](dashboard/screenshots/discount_vs_profit.png)
+   <img src="dashboard/screenshots/discount_vs_profit.png" alt="Discount vs Profit" width="320" />
 
    Short interpretation: The scatter shows many low-profit observations at higher discount levels; a smoothed trend is included.
 
 - **Top customers (by profit)**
 
-   ![Top customers](dashboard/screenshots/top_customers.png)
+   <img src="dashboard/screenshots/top_customers.png" alt="Top customers" width="320" />
 
    Short interpretation: A small set of customers contributes a large share of profit.
+
+SQL Insights
+------------
+- **Top 3 profitable regions:** West, East, South (by aggregated profit).
+- **Discount threshold causing average negative profit:** ~28% discount — when discounts exceed this level the average order profit becomes negative in binned analysis.
+- **Top 10 customers (by profit):** Tamara Chand; Raymond Buch; Sanjit Chand; Hunter Lopez; Adrian Barton; Tom Ashbrook; Christopher Martinez; Keith Dawkins; Andy Reiter; Daniel Raglin.
+
+Business context
+----------------
+This analysis helps retail decision-makers prioritize regions, product categories, and customer segments that drive profitability and to quantify how discounting affects margins. It turns raw transaction records into specific actions: tighten discounts for low-margin segments, reward high-value customers, and focus merchandising on top-performing products and regions.
+
+Resume-style summary
+--------------------
+- Performed end-to-end SQL analysis and dashboard creation on the Superstore dataset to identify profit drivers and actionable insights (data cleaning, SQL queries, visualizations, and reporting).
 
 - **Sales by category**
 
