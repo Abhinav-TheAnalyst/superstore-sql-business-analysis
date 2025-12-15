@@ -1,3 +1,52 @@
+# Superstore — SQL & Data Analysis
+
+Short summary
+--------------
+This repository contains a practical, recruiter-friendly analysis of the "Sample — Superstore" dataset.
+Work here is SQL-first: the data is cleaned and the key analysis is implemented as a set of ordered SQL scripts. The repo also contains a short executive summary and dashboard notes suitable for a portfolio or interview.
+
+Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst / https://www.linkedin.com/in/abhinav-theanalyst/
+
+What you'll find here
+----------------------
+- `sql/` — main analysis (run `01_data_cleaning.sql` → `07_final_insights.sql`).
+- `reports/executive_summary.md` — one-page findings and recommended next steps.
+- `dashboard/` — notes and example screenshots for quick visuals (Power BI / Tableau).
+- `notebooks/` — optional notebook for local exploration (kept for convenience).
+
+Notes about the data
+--------------------
+- The raw dataset is not included. To reproduce results, download the Sample — Superstore CSV from Kaggle and place it locally at `data/raw/Sample - Superstore.csv`.
+- A cleaned CSV placeholder (`data/processed/superstore_cleaned.csv`) is present so reviewers can inspect column names and a few sample rows without the raw file.
+
+Quick start (minimal)
+---------------------
+1) Place the original dataset locally (do not commit it):
+
+   - `data/raw/Sample - Superstore.csv` (Kaggle link in `reports/executive_summary.md`).
+
+2) (Optional) If you want to run the cleaner or notebook, create a small virtual environment and install requirements from `archive_removed` where helper files are preserved:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r archive_removed\requirements.txt
+```
+
+3) Run the cleaner (if you restored the script from `archive_removed`):
+
+```powershell
+python archive_removed\scripts\clean_data.py --input "data/raw/Sample - Superstore.csv" --output "data/processed/superstore_cleaned.csv"
+```
+
+4) Load `data/processed/superstore_cleaned.csv` into your database (Postgres, SQLite, DuckDB) and run the SQL scripts in `sql/` in order.
+
+Notes for reviewers
+-------------------
+- The heart of the project is in the SQL scripts. For a quick review, read `reports/executive_summary.md` and then open `sql/02_sales_overview.sql` and `sql/05_discount_impact.sql`.
+- I did not commit raw data; if you want ready-made PNGs or a SQLite dump, I can generate them locally and add them to `dashboard/screenshots/` on request.
+
+If you'd like a shorter one-page README for hiring managers or a longer technical appendix, tell me which version and I will prepare it.
 ````markdown
 # 🏬 Superstore SQL Business Analysis
 
