@@ -14,7 +14,6 @@ Table of contents
 - [Visuals (embedded)](#visuals-embedded)
 - [SQL + Notebook](#sql--notebook)
 - [Files changed / added by last run](#files-changed--added-by-last-run)
-- [Next improvements](#next-improvements)
 
 Project overview
 ----------------
@@ -124,17 +123,6 @@ Files changed / added by the last run
 - `dashboard/screenshots/*.png` — generated visuals
 - `dashboard/screenshots/kpis.json` — KPI summary for quick reference
 - `notebooks/analysis_executed.html` — executed notebook export
-
-Next improvements (optional)
----------------------------
-- Add `requirements.txt` to pin versions for reproducibility (I can add this).
-- Produce higher-resolution images (`dpi=300`) for presentation/print.
-- Add Plotly interactive exports and save `.html` interactive charts (requires `plotly` + `kaleido`).
-- Create a GitHub Actions workflow to regenerate visuals and export the notebook on push.
-
-Contributing
-------------
-If you'd like me to apply any of the optional improvements above, reply with the feature you want (for example: `requirements`, `high-res`, `plotly`, or `ci`). I will implement and push the changes.
 
 Contact
 -------
