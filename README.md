@@ -1,6 +1,6 @@
 # Superstore — SQL & Data Analysis
 
-Professional, recruiter-ready analysis of the "Sample – Superstore" dataset. This repository shows an SQL-first workflow, reproducible data cleaning, and static chart exports suitable for a portfolio or interview.
+Analysis of the "Sample – Superstore" dataset. This repository shows an SQL-first workflow, reproducible data cleaning, and static chart exports suitable for a portfolio or interview.
 
 Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst
 
