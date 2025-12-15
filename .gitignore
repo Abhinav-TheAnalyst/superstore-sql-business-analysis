@@ -9,5 +9,6 @@ build/
 dist/
 .DS_Store
 data/processed/*.csv
+data/raw/*.csv
 *.sqlite
 /.vscode/
