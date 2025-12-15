@@ -43,6 +43,14 @@ Short, interview-ready insights derived from the SQL analysis and visuals.
 - Customer concentration: the **top 10 customers** by profit are responsible for a large share of profit — prioritize retention and tailored offers.
 - Product focus: a small set of products and categories deliver the majority of sales — prioritize merchandising and inventory for high-performers.
 
+- **Products with high sales but negative profit:**
+   - Cisco TelePresence System EX90 Videoconferencing Unit
+   - GBC DocuBind P400 Electric Binding System
+   - High Speed Automatic Electric Letter Opener
+   - Lexmark MX611dhe Monochrome Laser Printer
+   - Martin Yale Chadless Opener Electric Letter Opener
+
+
 ---
 
 ## Quick KPI highlights
