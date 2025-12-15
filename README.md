@@ -1,5 +1,75 @@
 # Superstore — SQL & Data Analysis
 
+This repository is an intermediate-level, recruiter-ready analysis built on the "Sample — Superstore" dataset. It demonstrates data cleaning, SQL-first analysis, and static visualizations suitable for inclusion in a portfolio or a coding challenge submission.
+
+Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst
+
+Contents (key files)
+- `data/raw/Sample - Superstore.csv` — original CSV (not tracked; add locally to reproduce)
+- `dashboard/screenshots/` — generated PNG charts and `kpis.json`
+- `scripts/generate_charts.py` — script that produces the PNGs using `pandas`, `matplotlib`, and `seaborn`
+- `notebooks/analysis.ipynb` — exploratory analysis and charts (local execution)
+- `sql/` — ordered SQL scripts (01 → 07) and `table_schema.sql`
+- `reports/executive_summary.md` — recruiter-friendly summary
+
+Quick start (PowerShell)
+1. Create and activate a Python environment, then install dependencies:
+
+```powershell
+cd "d:\python projects\git\superstore dataset"
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install pandas matplotlib seaborn jupyter nbconvert
+```
+
+2. Place the dataset at:
+
+```text
+data/raw/Sample - Superstore.csv
+```
+
+3. Generate the dashboard PNGs and KPIs:
+
+```powershell
+python scripts\generate_charts.py "data/raw/Sample - Superstore.csv" "dashboard/screenshots/"
+```
+
+4. Optionally execute the notebook and export HTML:
+
+```powershell
+python -m nbconvert --to html --execute "notebooks/analysis.ipynb" --output "notebooks/analysis_executed.html"
+```
+
+Key findings (from the latest run)
+- Total sales: 2,297,200.86
+- Total profit: 286,397.02
+- Top region by profit: West
+
+Visuals (all saved in `dashboard/screenshots/`)
+- `profit_by_region.png` — Total profit by region
+- `discount_vs_profit.png` — Discount vs Profit scatter + trend
+- `top_customers.png` — Top customers by profit
+- `sales_by_category.png` — Sales by product category
+- `monthly_sales_trend.png` — Monthly sales time series
+- `top_products.png` — Top products by sales
+- `discount_distribution.png` — Discount distribution
+- `correlation_heatmap.png` — Numeric correlations
+
+Reproducibility notes
+- The `generate_charts.py` script attempts a few common CSV encodings (utf-8, latin1, cp1252) and normalizes column names. It writes `kpis.json` into the output folder with the computed KPIs.
+- I recommend adding a `requirements.txt` to lock versions for reproducible results; I can add this for you.
+
+If you want further polish (higher-resolution images, alternative color palettes, Plotly interactive exports, or a GitHub Action to regenerate visuals), tell me which option and I'll implement it.
+
+---
+Files added/updated by the last run:
+- `scripts/generate_charts.py` (chart generator)
+- `dashboard/screenshots/*.png` (generated)
+- `dashboard/screenshots/kpis.json`
+- `notebooks/analysis_executed.html` (notebook export)
+# Superstore — SQL & Data Analysis
+
 Short summary
 --------------
 This repository contains a practical, recruiter-friendly analysis of the "Sample — Superstore" dataset.
