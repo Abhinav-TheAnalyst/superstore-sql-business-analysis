@@ -11,114 +11,109 @@ Table of contents
 - [Environment & Python version](#environment--python-version)
 - [Quick start (reproduce visuals)](#quick-start-reproduce-visuals)
 - [KPIs (from latest run)](#kpis-from-latest-run)
-- [Visuals (embedded)](#visuals-embedded)
-- [SQL + Notebook](#sql--notebook)
-- [Files changed / added by last run](#files-changed--added-by-last-run)
+# Superstore — SQL & Data Analysis
 
-Project overview
-----------------
-This repo provides:
+A concise, recruiter-ready project demonstrating end-to-end SQL analysis, data cleaning, and dashboard-ready visualizations using the "Sample — Superstore" dataset.
 
-- a lightweight cleaning & charting script (`scripts/generate_charts.py`)
-- ordered SQL analysis scripts in `sql/` (01 → 07)
-- a short exploratory notebook (`notebooks/analysis.ipynb`)
-- a small dashboard folder with exported PNGs (`dashboard/screenshots/`)
+Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst
 
-Quick links
------------
-- Raw dataset (not committed): `data/raw/Sample - Superstore.csv`
-- Chart outputs: `dashboard/screenshots/` (PNG + `kpis.json`)
-- Chart generator: `scripts/generate_charts.py`
-- Notebook: `notebooks/analysis.ipynb`
-- Executive summary: `reports/executive_summary.md`
+---
 
-Environment & Python version
-----------------------------
-- Tested with: Python 3.10+ (the workspace used Python 3.14 during generation). Use Python 3.10 or newer.
-- Primary libraries: `pandas`, `matplotlib`, `seaborn`, `nbconvert` (for notebook export).
+## TL;DR (one-line resume bullet)
+- Performed end-to-end SQL analysis and dashboard creation on the Superstore dataset to identify profit drivers and produce actionable recommendations.
 
-Install (PowerShell)
---------------------
+---
+
+## Contents
+- Key business insights
+- Quick KPI highlights
+- Dashboard preview (thumbnails)
+- SQL script highlights (01 → 07)
+- How to reproduce (quick)
+- Files of interest
+- Next steps / contact
+
+---
+
+## Key business insights
+Short, interview-ready insights derived from the SQL analysis and visuals.
+
+- Top profitable regions: **West**, **East**, **South** (West leads in total profit).
+- Discounting impact: average discount ≈ **15.6%**. Binned analysis shows average profit per order turns negative at roughly **28%** discount — review aggressive promotions above this level.
+- Customer concentration: the **top 10 customers** by profit are responsible for a large share of profit — prioritize retention and tailored offers.
+- Product focus: a small set of products and categories deliver the majority of sales — prioritize merchandising and inventory for high-performers.
+
+---
+
+## Quick KPI highlights
+- **Total sales:** 2,297,200.86
+- **Total profit:** 286,397.02
+- **Average discount:** 15.6%
+- **Avg profit per order:** 28.66
+- **Discount threshold (avg profit → negative):** ≈ 28%
+
+---
+
+## Dashboard preview
+Thumbnails give instant visual impact (full PNGs are in `dashboard/screenshots/`).
+
+| Profit by region | Discount vs Profit | Top customers |
+|---:|:---:|:---|
+| ![Profit by region](dashboard/screenshots/profit_by_region.png){width=320} | ![Discount vs Profit](dashboard/screenshots/discount_vs_profit.png){width=320} | ![Top customers](dashboard/screenshots/top_customers.png){width=320} |
+
+Caption: these charts show where profit concentrates, the effect of discounting on profit, and the customers contributing most to profitability.
+
+---
+
+## SQL script highlights (01 → 07)
+Run scripts in order to reproduce the analysis; each is short and purpose-driven.
+
+- `01_data_cleaning.sql` — clean and standardize raw tables (types, nulls, trimmed fields) to create analysis-ready tables.
+- `02_sales_overview.sql` — compute top-level sales KPIs and time-based aggregates (sales / profit by year and month).
+- `03_region_analysis.sql` — compare region-level performance and identify top/bottom-performing regions.
+- `04_product_analysis.sql` — identify top products and categories driving revenue and profit.
+- `05_discount_impact.sql` — quantify discounting behavior and its impact on profit (helps find loss thresholds).
+- `06_customer_analysis.sql` — rank customers by revenue and profit and compute customer-level metrics.
+- `07_final_insights.sql` — consolidate final tables and suggested business actions for reporting.
+
+---
+
+## How to reproduce (quick)
+1. Place the dataset at `data/raw/Sample - Superstore.csv` (do not commit private data).
+2. Create a Python environment and install dependencies (Python 3.10+ recommended):
+
 ```powershell
-cd "d:\python projects\git\superstore dataset"
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install pandas matplotlib seaborn jupyter nbconvert
+python -m pip install -r requirements.txt
 ```
 
-Quick start — reproduce visuals
-------------------------------
-1. Place the dataset at `data/raw/Sample - Superstore.csv`.
-2. Generate charts and KPIs:
+3. Generate visuals and KPIs:
 
 ```powershell
 python scripts\generate_charts.py "data/raw/Sample - Superstore.csv" "dashboard/screenshots/"
 ```
 
-3. Optionally execute the notebook and export HTML (may require additional packages):
+4. (Optional) Execute the notebook and export an HTML walkthrough:
 
 ```powershell
 python -m nbconvert --to html --execute "notebooks/analysis.ipynb" --output "notebooks/analysis_executed.html"
 ```
 
-KPIs (from the latest run)
--------------------------
-The chart generator writes `dashboard/screenshots/kpis.json`. The latest values are:
+---
 
-- **Total sales:** `2,297,200.86`
-- **Total profit:** `286,397.02`
-- **Top region by profit:** `West`
+## Files of interest
+- `sql/` — SQL scripts (01 → 07)
+- `scripts/generate_charts.py` — chart generator and KPI writer (`kpis.json`)
+- `dashboard/screenshots/` — generated PNGs and `kpis.json`
+- `notebooks/analysis.ipynb` — exploratory notebook
 
-**Quick KPI highlights**
+---
 
-- **Total sales:** `2,297,200.86`
-- **Total profit:** `286,397.02`
-- **Average discount:** `15.6%`
-- **Avg profit per order:** `28.66`
-- **Discount threshold where avg profit turns negative (approx):** `28%`
-
-Visuals (embedded)
--------------------
-All visuals were created with `matplotlib` + `seaborn` and saved to `dashboard/screenshots/`.
-
-- **Profit by region**
-
-   <img src="dashboard/screenshots/profit_by_region.png" alt="Profit by region" width="320" />
-
-   Short interpretation: The `West` region shows the highest aggregated profit in this dataset.
-
-- **Discount vs Profit**
-
-   <img src="dashboard/screenshots/discount_vs_profit.png" alt="Discount vs Profit" width="320" />
-
-   Short interpretation: The scatter shows many low-profit observations at higher discount levels; a smoothed trend is included.
-
-- **Top customers (by profit)**
-
-   <img src="dashboard/screenshots/top_customers.png" alt="Top customers" width="320" />
-
-   Short interpretation: A small set of customers contributes a large share of profit.
-
-SQL Insights
-------------
-- **Top 3 profitable regions:** West, East, South (by aggregated profit).
-- **Discount threshold causing average negative profit:** ~28% discount — when discounts exceed this level the average order profit becomes negative in binned analysis.
-- **Top 10 customers (by profit):** Tamara Chand; Raymond Buch; Sanjit Chand; Hunter Lopez; Adrian Barton; Tom Ashbrook; Christopher Martinez; Keith Dawkins; Andy Reiter; Daniel Raglin.
-
-Business context
-----------------
-This analysis helps retail decision-makers prioritize regions, product categories, and customer segments that drive profitability and to quantify how discounting affects margins. It turns raw transaction records into specific actions: tighten discounts for low-margin segments, reward high-value customers, and focus merchandising on top-performing products and regions.
-
-Resume-style summary
---------------------
-- Performed end-to-end SQL analysis and dashboard creation on the Superstore dataset to identify profit drivers and actionable insights (data cleaning, SQL queries, visualizations, and reporting).
-
-- **Sales by category**
-
-   ![Sales by category](dashboard/screenshots/sales_by_category.png)
-
-- **Monthly sales trend**
+## Next steps / contact
+- Suggested next steps: add GitHub Actions to regenerate visuals on push, export Plotly interactive charts, and produce presentation-grade PNGs (`dpi=300`).
+- Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst
 
    ![Monthly sales trend](dashboard/screenshots/monthly_sales_trend.png)
 
