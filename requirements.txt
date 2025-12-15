@@ -1,0 +1,18 @@
+# Requirements pinned to the environment used to generate visuals (tested with Python 3.14)
+pandas==2.3.3
+numpy==2.3.5
+matplotlib==3.10.7
+seaborn==0.13.2
+plotly==6.5.0
+scipy==1.16.3
+scikit-learn==1.7.2
+
+# Notebook / tooling
+jupyter==1.1.1
+nbconvert==7.16.6
+ipykernel==7.1.0
+ipython==9.7.0
+
+# Misc (useful for reproducibility)
+requests==2.32.5
+python-dateutil==2.9.0.post0
