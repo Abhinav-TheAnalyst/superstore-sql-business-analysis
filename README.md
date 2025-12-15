@@ -1,20 +1,45 @@
 # Superstore — SQL & Data Analysis
 
-This repository is an intermediate-level, recruiter-ready analysis built on the "Sample — Superstore" dataset. It demonstrates data cleaning, SQL-first analysis, and static visualizations suitable for inclusion in a portfolio or a coding challenge submission.
+Professional, recruiter-ready analysis of the "Sample – Superstore" dataset. This repository shows an SQL-first workflow, reproducible data cleaning, and static chart exports suitable for a portfolio or interview.
 
 Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst
 
-Contents (key files)
-- `data/raw/Sample - Superstore.csv` — original CSV (not tracked; add locally to reproduce)
-- `dashboard/screenshots/` — generated PNG charts and `kpis.json`
-- `scripts/generate_charts.py` — script that produces the PNGs using `pandas`, `matplotlib`, and `seaborn`
-- `notebooks/analysis.ipynb` — exploratory analysis and charts (local execution)
-- `sql/` — ordered SQL scripts (01 → 07) and `table_schema.sql`
-- `reports/executive_summary.md` — recruiter-friendly summary
+Table of contents
+-----------------
+- [Project overview](#project-overview)
+- [Quick links](#quick-links)
+- [Environment & Python version](#environment--python-version)
+- [Quick start (reproduce visuals)](#quick-start-reproduce-visuals)
+- [KPIs (from latest run)](#kpis-from-latest-run)
+- [Visuals (embedded)](#visuals-embedded)
+- [SQL + Notebook](#sql--notebook)
+- [Files changed / added by last run](#files-changed--added-by-last-run)
+- [Next improvements](#next-improvements)
 
-Quick start (PowerShell)
-1. Create and activate a Python environment, then install dependencies:
+Project overview
+----------------
+This repo provides:
 
+- a lightweight cleaning & charting script (`scripts/generate_charts.py`)
+- ordered SQL analysis scripts in `sql/` (01 → 07)
+- a short exploratory notebook (`notebooks/analysis.ipynb`)
+- a small dashboard folder with exported PNGs (`dashboard/screenshots/`)
+
+Quick links
+-----------
+- Raw dataset (not committed): `data/raw/Sample - Superstore.csv`
+- Chart outputs: `dashboard/screenshots/` (PNG + `kpis.json`)
+- Chart generator: `scripts/generate_charts.py`
+- Notebook: `notebooks/analysis.ipynb`
+- Executive summary: `reports/executive_summary.md`
+
+Environment & Python version
+----------------------------
+- Tested with: Python 3.10+ (the workspace used Python 3.14 during generation). Use Python 3.10 or newer.
+- Primary libraries: `pandas`, `matplotlib`, `seaborn`, `nbconvert` (for notebook export).
+
+Install (PowerShell)
+--------------------
 ```powershell
 cd "d:\python projects\git\superstore dataset"
 python -m venv .venv
@@ -23,100 +48,98 @@ python -m pip install --upgrade pip
 python -m pip install pandas matplotlib seaborn jupyter nbconvert
 ```
 
-2. Place the dataset at:
-
-```text
-data/raw/Sample - Superstore.csv
-```
-
-3. Generate the dashboard PNGs and KPIs:
+Quick start — reproduce visuals
+------------------------------
+1. Place the dataset at `data/raw/Sample - Superstore.csv`.
+2. Generate charts and KPIs:
 
 ```powershell
 python scripts\generate_charts.py "data/raw/Sample - Superstore.csv" "dashboard/screenshots/"
 ```
 
-4. Optionally execute the notebook and export HTML:
+3. Optionally execute the notebook and export HTML (may require additional packages):
 
 ```powershell
 python -m nbconvert --to html --execute "notebooks/analysis.ipynb" --output "notebooks/analysis_executed.html"
 ```
 
-Key findings (from the latest run)
-- Total sales: 2,297,200.86
-- Total profit: 286,397.02
-- Top region by profit: West
+KPIs (from the latest run)
+-------------------------
+The chart generator writes `dashboard/screenshots/kpis.json`. The latest values are:
 
-Visuals (all saved in `dashboard/screenshots/`)
-- `profit_by_region.png` — Total profit by region
-- `discount_vs_profit.png` — Discount vs Profit scatter + trend
-- `top_customers.png` — Top customers by profit
-- `sales_by_category.png` — Sales by product category
-- `monthly_sales_trend.png` — Monthly sales time series
-- `top_products.png` — Top products by sales
-- `discount_distribution.png` — Discount distribution
-- `correlation_heatmap.png` — Numeric correlations
+- **Total sales:** `2,297,200.86`
+- **Total profit:** `286,397.02`
+- **Top region by profit:** `West`
 
-Reproducibility notes
-- The `generate_charts.py` script attempts a few common CSV encodings (utf-8, latin1, cp1252) and normalizes column names. It writes `kpis.json` into the output folder with the computed KPIs.
-- I recommend adding a `requirements.txt` to lock versions for reproducible results; I can add this for you.
-
-If you want further polish (higher-resolution images, alternative color palettes, Plotly interactive exports, or a GitHub Action to regenerate visuals), tell me which option and I'll implement it.
-
----
-Files added/updated by the last run:
-- `scripts/generate_charts.py` (chart generator)
-- `dashboard/screenshots/*.png` (generated)
-- `dashboard/screenshots/kpis.json`
-- `notebooks/analysis_executed.html` (notebook export)
-# Superstore — SQL & Data Analysis
-
-Short summary
---------------
-This repository contains a practical, recruiter-friendly analysis of the "Sample — Superstore" dataset.
-Work here is SQL-first: the data is cleaned and the key analysis is implemented as a set of ordered SQL scripts. The repo also contains a short executive summary and dashboard notes suitable for a portfolio or interview.
-
-Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst / https://www.linkedin.com/in/abhinav-theanalyst/
-
-What you'll find here
-----------------------
-- `sql/` — main analysis (run `01_data_cleaning.sql` → `07_final_insights.sql`).
-- `reports/executive_summary.md` — one-page findings and recommended next steps.
-- `dashboard/` — notes and example screenshots for quick visuals (Power BI / Tableau).
-- `notebooks/` — optional notebook for local exploration (kept for convenience).
-
-Notes about the data
---------------------
-- The raw dataset is not included. To reproduce results, download the Sample — Superstore CSV from Kaggle and place it locally at `data/raw/Sample - Superstore.csv`.
-- A cleaned CSV placeholder (`data/processed/superstore_cleaned.csv`) is present so reviewers can inspect column names and a few sample rows without the raw file.
-
-Quick start (minimal)
----------------------
-1) Place the original dataset locally (do not commit it):
-
-   - `data/raw/Sample - Superstore.csv` (Kaggle link in `reports/executive_summary.md`).
-
-2) (Optional) If you want to run the cleaner or notebook, create a small virtual environment and install requirements from `archive_removed` where helper files are preserved:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r archive_removed\requirements.txt
-```
-
-3) Run the cleaner (if you restored the script from `archive_removed`):
-
-```powershell
-python archive_removed\scripts\clean_data.py --input "data/raw/Sample - Superstore.csv" --output "data/processed/superstore_cleaned.csv"
-```
-
-4) Load `data/processed/superstore_cleaned.csv` into your database (Postgres, SQLite, DuckDB) and run the SQL scripts in `sql/` in order.
-
-Notes for reviewers
+Visuals (embedded)
 -------------------
-- The heart of the project is in the SQL scripts. For a quick review, read `reports/executive_summary.md` and then open `sql/02_sales_overview.sql` and `sql/05_discount_impact.sql`.
-- I did not commit raw data; if you want ready-made PNGs or a SQLite dump, I can generate them locally and add them to `dashboard/screenshots/` on request.
+All visuals were created with `matplotlib` + `seaborn` and saved to `dashboard/screenshots/`.
 
-If you'd like a shorter one-page README for hiring managers or a longer technical appendix, tell me which version and I will prepare it.
+- **Profit by region**
+
+   ![Profit by region](dashboard/screenshots/profit_by_region.png)
+
+   Short interpretation: The `West` region shows the highest aggregated profit in this dataset.
+
+- **Discount vs Profit**
+
+   ![Discount vs Profit](dashboard/screenshots/discount_vs_profit.png)
+
+   Short interpretation: The scatter shows many low-profit observations at higher discount levels; a smoothed trend is included.
+
+- **Top customers (by profit)**
+
+   ![Top customers](dashboard/screenshots/top_customers.png)
+
+   Short interpretation: A small set of customers contributes a large share of profit.
+
+- **Sales by category**
+
+   ![Sales by category](dashboard/screenshots/sales_by_category.png)
+
+- **Monthly sales trend**
+
+   ![Monthly sales trend](dashboard/screenshots/monthly_sales_trend.png)
+
+- **Top products by sales**
+
+   ![Top products](dashboard/screenshots/top_products.png)
+
+- **Discount distribution**
+
+   ![Discount distribution](dashboard/screenshots/discount_distribution.png)
+
+- **Correlation heatmap**
+
+   ![Correlation heatmap](dashboard/screenshots/correlation_heatmap.png)
+
+SQL + Notebook
+--------------
+- SQL scripts are located in `sql/` and are intended to be run in order (01 → 07). They contain the main analysis logic and final insights.
+- The notebook `notebooks/analysis.ipynb` provides a runnable exploratory analysis; an executed HTML export is available at `notebooks/analysis_executed.html`.
+
+Files changed / added by the last run
+-----------------------------------
+- `scripts/generate_charts.py` — expanded chart generator (new/updated)
+- `dashboard/screenshots/*.png` — generated visuals
+- `dashboard/screenshots/kpis.json` — KPI summary for quick reference
+- `notebooks/analysis_executed.html` — executed notebook export
+
+Next improvements (optional)
+---------------------------
+- Add `requirements.txt` to pin versions for reproducibility (I can add this).
+- Produce higher-resolution images (`dpi=300`) for presentation/print.
+- Add Plotly interactive exports and save `.html` interactive charts (requires `plotly` + `kaleido`).
+- Create a GitHub Actions workflow to regenerate visuals and export the notebook on push.
+
+Contributing
+------------
+If you'd like me to apply any of the optional improvements above, reply with the feature you want (for example: `requirements`, `high-res`, `plotly`, or `ci`). I will implement and push the changes.
+
+Contact
+-------
+Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst
+
 ````markdown
 # 🏬 Superstore SQL Business Analysis
 
