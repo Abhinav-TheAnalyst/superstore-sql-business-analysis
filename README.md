@@ -19,7 +19,7 @@ Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst
 
 ---
 
-## TL;DR (one-line resume bullet)
+## TL;DR
 - Performed end-to-end SQL analysis and dashboard creation on the Superstore dataset to identify profit drivers and produce actionable recommendations.
 
 ---
