@@ -53,6 +53,15 @@ Short, interview-ready insights derived from the SQL analysis and visuals.
 
 ---
 
+## Key Insights
+Concise, business-focused takeaways from the analysis.
+
+- **Most profitable region:** West (largest total profit contribution).
+- **Discount threshold (profit → negative):** ~28% — review promotions above this level.
+- **Top product category by profit:** Technology.
+- **Customer concentration:** Top customers (top 10) contribute a majority of profit — prioritize retention and high-value offers.
+
+
 ## Quick KPI highlights
 - **Total sales:** 2,297,200.86
 - **Total profit:** 286,397.02
@@ -62,15 +71,12 @@ Short, interview-ready insights derived from the SQL analysis and visuals.
 
 ---
 
-## Dashboard preview
-Thumbnails give instant visual impact (full PNGs are in `dashboard/screenshots/`).
+## Dashboard Preview
+A single dashboard view showing regional profit distribution and where to focus actions.
 
-| Profit by region | Discount vs Profit | Top customers |
-|---:|:---:|:---|
-| ![Profit by region](dashboard/screenshots/profit_by_region.png){width=320} | ![Discount vs Profit](dashboard/screenshots/discount_vs_profit.png){width=320} | ![Top customers](dashboard/screenshots/top_customers.png){width=320} |
+![Dashboard — Profit by region](dashboard/screenshots/profit_by_region.png)
 
-Caption: these charts show where profit concentrates, the effect of discounting on profit, and the customers contributing most to profitability.
-
+Caption: Profit by region (highlights West as the most profitable region); used to guide regional prioritization and resource allocation.
 ---
 
 ## SQL script highlights (01 → 07)
@@ -152,3 +158,7 @@ Files changed / added by the last run
 Contact
 -------
 Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst
+
+---
+
+Resume summary: Performed end-to-end SQL and data analysis on the Sample Superstore dataset to identify profit drivers, optimize discounting (identified ~28% loss threshold), and deliver dashboard-ready insights for business prioritization.
