@@ -1,3 +1,4 @@
+````markdown
 # 🏬 Superstore SQL Business Analysis
 
 ## 📌 Project Overview
@@ -53,7 +54,7 @@ Author: Abhinav Verma — https://github.com/Abhinav-TheAnalyst / https://www.li
 1) Create a Python environment and install requirements:
 
 ```powershell
-python -m venv .venv; .\.venv\Scripts\Activate.ps1
+python -m venv .venv; .\\.venv\\Scripts\\Activate.ps1
 pip install -r requirements.txt
 ```
 
@@ -62,7 +63,7 @@ pip install -r requirements.txt
 3) Run the cleaning script to produce `data/processed/superstore_cleaned.csv`:
 
 ```powershell
-python scripts\clean_data.py --input "data/raw/Superstore.csv" --output "data/processed/superstore_cleaned.csv"
+python scripts\\clean_data.py --input "data/raw/Superstore.csv" --output "data/processed/superstore_cleaned.csv"
 ```
 
 4) Load the cleaned CSV into your RDBMS of choice (Postgres/MySQL/SQLite) or run the SQL files directly against a local SQLite DB after importing the CSV.
@@ -75,4 +76,5 @@ python scripts\clean_data.py --input "data/raw/Superstore.csv" --output "data/pr
 2. Load the cleaned CSV into a database (or use pandas / DuckDB for analysis).
 3. Run the SQL scripts in `sql/` in order (01 → 07) to reproduce the analysis.
 4. Use `reports/executive_summary.md` for the top-level talking points for interviews or the hiring manager.
-
+ 
+````
